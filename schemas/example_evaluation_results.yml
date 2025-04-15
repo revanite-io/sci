@@ -1,0 +1,32 @@
+name: Open Source Security Baseline
+frameworkID: OSPS
+evaluations:
+  - name: "OSPS BR Controls Evaluation"
+    controlID: "OSPS-BR-01"
+    assessments:
+      - requirementID: "OSPS-BR-01.01"
+        methods:
+          - name: "Manual review of CI pipelines used by the project"
+            description: "Manually review the CI pipelines for proper handling of user-controlled build inputs."
+            run: false
+          - name: "One time SAST scan of GitHub Actions workflows"
+            description: "GitHub Actions-specific SAST scan run against all contents of `.github/workflows`."
+            run: true
+            result: passed
+          - name: "Ongoing CodeQL SAST scanning of GitHub Actions workflows"
+            description: "Project is configured to run regular CodeQL SAST scans of GitHub Actions workflows."
+            run: true
+            result: needs_review
+      - requirementID: "OSPS-BR-01.02"
+        methods:
+          - name: "Manual review of CI pipelines used by the project"
+            description: "Manually review the CI pipelines for proper handling of branch-name build inputs."
+            run: false
+          - name: "One time SAST scan of GitHub Actions workflows"
+            description: "GitHub Actions-specific SAST scan run against all contents of `.github/workflows`."
+            run: true
+            result: passed
+          - name: "Ongoing CodeQL SAST scanning of GitHub Actions workflows"
+            description: "Project is configured to run regular CodeQL SAST scans of GitHub Actions workflows."
+            run: true
+            result: passed
