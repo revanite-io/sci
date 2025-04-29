@@ -69,3 +69,10 @@ lintcue:
 	@cue eval ./schemas/layer-2.cue --all-errors --verbose
 	@echo "  >  Linting layer-4.cue ..."
 	@cue eval ./schemas/layer-4.cue --all-errors --verbose
+
+lintexamples:
+	@echo "  >  Linting example files ..."
+	@echo "  >  Linting schemas/example_evaluation_results ..."
+	@cue vet schemas/layer-4.cue schemas/example_evaluation_results.yml -d '#Layer4'
+
+PHONY: lintcue lintexamples
