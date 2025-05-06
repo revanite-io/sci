@@ -2,112 +2,168 @@
 
 package layer2
 
+// Layer2 describes a collection or catalog of technology-specific, threat-informed security controls
+// that can be applied to an information system.
 type Layer2 struct {
+	// metadata about the Layer2 collection
 	Metadata *Metadata `json:"metadata,omitempty"`
 
+	// one or more ControlFamily objects
 	ControlFamilies []ControlFamily `json:"control-families,omitempty"`
 
+	// zero or more Threats that are mitigated by the controls in the ControlFamilies
 	Threats []Threat `json:"threats,omitempty"`
 
+	// zero or more Capabilities in use that inform the controls in the ControlFamilies
 	Capabilities []Capability `json:"capabilities,omitempty"`
 
+	// zero or more mapping references to controls defined in this or other Layer2 frameworks or standards
 	SharedControls []Mapping `json:"shared-controls,omitempty"`
 
+	// zero or more mapping references to threats defined in this or other Layer2 frameworks or standards
 	SharedThreats []Mapping `json:"shared-threats,omitempty"`
 
+	// zero or more mapping references to capabilities defined in this or other Layer2 frameworks or standards
 	SharedCapabilities []Mapping `json:"shared-capabilities,omitempty"`
 }
 
 type Metadata struct {
+	// unique identifier for the Layer2 collection
 	Id string `json:"id"`
 
+	// name for the Layer2 collection
 	Title string `json:"title"`
 
+	// description of the Layer2 collection
 	Description string `json:"description"`
 
 	Version string `json:"version,omitempty"`
 
+	// timestamp of the last modification to the Layer2 collection
 	LastModified string `json:"last-modified,omitempty"`
 
-	ApplicabilityCategories []Category `json:"applicability-categories,omitempty"`
+	// AssessmentLevels is a list of values used to categorize the AssessmentRequirements of the Controls in this Layer2 collection.For example, the NIST 800-53 controls are categorized as low, moderate, and high baselines and if this Layer2 collection contained those NIST 800-53 controls, the AssessmentLevels would be "low", "moderate", and "high".
+	AssessmentLevels []AssessmentLevel `json:"assessment-levels,omitempty"`
 
+	// List of applicable references to Layer 1 guidance, technical capabilities and threats that inform the Layer2 collection
 	MappingReferences []MappingReference `json:"mapping-references,omitempty"`
 }
 
-type Category struct {
+// AssessmentLevel defines a logical grouping of controls by level.
+type AssessmentLevel struct {
+	// unique identifier for the level
 	Id string `json:"id"`
 
+	// name of the level
 	Title string `json:"title"`
 
+	// description of the level
 	Description string `json:"description"`
 }
 
+// ControlFamily is a collection of security controls that are grouped together based on a common theme or purpose. Control families are used to organize and categorize security controls within a Layer2 framework or standard.
 type ControlFamily struct {
+	// name of the control family
 	Title string `json:"title"`
 
+	// description of the control family
 	Description string `json:"description"`
 
+	// the Controls that are part of this ControlFamily
 	Controls []Control `json:"controls"`
 }
 
+// Controls are the specific guardrails that organizations put in place to protect their information systems. They are typically informed by the best practices and industry standards which are produced in Layer 1. Controls are typically developed by an organization for its own purposes, or for general use by industry groups, government agencies, or international standards bodies.
 type Control struct {
+	// unique identifier for the control
 	Id string `json:"id"`
 
+	// name of the control
 	Title string `json:"title"`
 
+	// the intended outcome of applying the control
 	Objective string `json:"objective"`
 
+	// the assessment requirements that are used to determine if the control is met
 	AssessmentRequirements []AssessmentRequirement `json:"assessment-requirements"`
 
-	GuidelineMappings []Mapping `json:"guideline-mappings,omitempty"`
+	// references to layer 1 guidance or standards that inform the control
+	GuidanceMappings []Mapping `json:"guidance-mappings,omitempty"`
 
+	// references to threats that are mitigated by the control
 	ThreatMappings []Mapping `json:"threat-mappings,omitempty"`
 }
 
+// Threats are circumstances or events with the potential to adversely impact organizational operations (including mission, functions, image, or reputation), organizational assets, or individuals through an information system via unauthorized access, destruction, disclosure, modification of information, and/or denial of service. Also, the potential for a threat-source to successfully exploit a particular information system vulnerability.
 type Threat struct {
+	// unique identifier for the threat
 	Id string `json:"id"`
 
+	// name of the threat
 	Title string `json:"title"`
 
+	// description of the threat
 	Description string `json:"description"`
 
+	// references to the information system capabilities at risk from the threat
 	Capabilities []Mapping `json:"capabilities"`
 
+	// references Layer 1 threat guidance or catalogs
 	ExternalMappings []Mapping `json:"external-mappings,omitempty"`
 }
 
+// Capability is a function or feature of an information system to which Controls and Threats may apply.
 type Capability struct {
+	// unique identifier for the capability
 	Id string `json:"id"`
 
+	// name of the capability
 	Title string `json:"title"`
 
+	// description of the capability
 	Description string `json:"description"`
 }
 
+// MappingReference is a detailed reference to a specific control, threat, or capability in a Layer 1 framework or standard. The MappingReference object contains the unique identifier, title, version, and optional description and URL for the reference.
 type MappingReference struct {
+	// unique identifier for the mapping reference
 	Id string `json:"id"`
 
+	// name of the mapping reference
 	Title string `json:"title"`
 
+	// version of the mapping reference
 	Version string `json:"version"`
 
+	// description of the mapping reference
 	Description string `json:"description,omitempty"`
 
+	// url providing detailed information about the referenced control, threat, or capability
 	Url string `json:"url,omitempty"`
 }
 
+// Mapping is a reference to one or more controls, threats, or capabilities within a MappingReference
 type Mapping struct {
+	// unique identifier of the mapping reference this mapping refers to
 	ReferenceId string `json:"reference-id"`
 
+	// list of unique identifiers for the controls, threats, or capabilities in the mapping reference
 	Identifiers []string `json:"identifiers"`
 }
 
+// AssessmentRequirement describes the specific requirements that must be met in order to demonstrate compliance with a control. Each AssessmentRequirement object contains a unique identifier, text description, applicability list and optional recommendation for the requirement.
 type AssessmentRequirement struct {
+	// unique identifier for the assessment requirement
 	Id string `json:"id"`
 
+	// text description of the assessment requirement
 	Text string `json:"text"`
 
-	Applicability []string `json:"applicability"`
+	// list of ApplicabilityLevel ID values that define which assessment levels the requirement applies to
+	// for example, if the requirement applies to all levels, the list would be ["low", "moderate", "high"]
+	// if the requirement applies to only one level, the list would be ["high"]
+	Levels []string `json:"levels"`
 
+	// text providing clear guidance on how to meet the assessment requirement
 	Recommendation string `json:"recommendation,omitempty"`
 }
