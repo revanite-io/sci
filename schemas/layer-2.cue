@@ -30,7 +30,7 @@ package schemas
     version?: string
     // timestamp of the last modification to the Layer2 collection
     "last-modified"?: string @go(LastModified)
-    // AssessmentLevels is a list of values used to categorize the AssessmentRequirements of the Controls in this Layer2 collection.For example, the NIST 800-53 controls are categorized as low, moderate, and high baselines and if this Layer2 collection contained those NIST 800-53 controls, the AssessmentLevels would be "low", "moderate", and "high".
+    // AssessmentLevels is a list of values used to categorize the AssessmentRequirements of the Controls in this Layer2 collection. For example, the NIST 800-53 controls are categorized as low, moderate, and high baselines and if this Layer2 collection contained those NIST 800-53 controls, the AssessmentLevels would be "low", "moderate", and "high".
     "assessment-levels"?: [...#AssessmentLevel] @go(AssessmentLevels)
     // List of applicable references to Layer 1 guidance, technical capabilities and threats that inform the Layer2 collection
     "mapping-references"?: [...#MappingReference] @go(MappingReferences)
