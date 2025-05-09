@@ -4,7 +4,7 @@ metadata:
   description: |
     The Open Source Project Security (OSPS) Baseline is a set of security
     criteria that projects should meet to demonstrate a strong security posture.
-  applicability-categories:
+  assessment-levels:
     - id: Maturity1
       title: Maturity Level 1
       description: |
@@ -67,7 +67,7 @@ control-families:
           Reduce the risk of account compromise or insider threats by requiring
           multi-factor authentication for collaborators modifying the project
           repository settings or accessing sensitive data.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - CC-G-1
@@ -99,7 +99,7 @@ control-families:
               When a user attempts to access a sensitive resource in the project's
               version control system, the system MUST require the user to complete
               a multi-factor authentication process.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -116,7 +116,7 @@ control-families:
         objective: |
           Reduce the risk of unauthorized access to the project's repository by
           limiting the permissions granted to new collaborators.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -143,7 +143,7 @@ control-families:
               When a new collaborator is added, the version control system MUST
               require manual permission assignment, or restrict the collaborator
               permissions to the lowest available privileges by default.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -160,7 +160,7 @@ control-families:
         objective: |
           Reduce the risk of accidental changes or deletion of the primary branch
           of the project's repository by preventing unintentional modification.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -186,7 +186,7 @@ control-families:
             text: |
               When a direct commit is attempted on the project's primary branch,
               an enforcement mechanism MUST prevent the change from being applied.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -201,7 +201,7 @@ control-families:
               When an attempt is made to delete the project's primary branch,
               the version control system MUST treat this as a sensitive activity
               and require explicit confirmation of intent.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -217,7 +217,7 @@ control-families:
           Reduce the risk of unauthorized access to the project's build and release
           processes by limiting the permissions granted to steps within the CI/CD
           pipelines.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2d
@@ -250,7 +250,7 @@ control-families:
               When a CI/CD task is executed with no permissions specified, the
               project's version control system MUST default to the lowest available
               permissions for all activities in the pipeline.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -262,7 +262,7 @@ control-families:
               When a job is assigned permissions in a CI/CD pipeline, the source
               code or configuration MUST only assign the minimum privileges
               necessary for the corresponding activity.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Configure the project's CI/CD pipelines to assign the lowest available
@@ -289,7 +289,7 @@ control-families:
           Reduce the risk of code injection or other security vulnerabilities in the
           project's build and release pipelines by preventing untrusted input from
           accessing privileged resources.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -315,7 +315,7 @@ control-families:
             text: |
               When a CI/CD pipeline accepts an input parameter, that parameter MUST
               be sanitized and validated prior to use in the pipeline.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -325,7 +325,7 @@ control-families:
               When a CI/CD pipeline uses a branch name in its functionality, that
               name value MUST be sanitized and validated prior to use in the
               pipeline.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -339,7 +339,7 @@ control-families:
           Ensure that each software asset produced by the project is uniquely
           identified, enabling users to track changes and updates to the project
           over time.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-5
@@ -367,7 +367,7 @@ control-families:
             text: |
               When an official release is created, that release MUST be assigned a
               unique version identifier.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -379,7 +379,7 @@ control-families:
               When an official release is created, all assets within that release
               MUST be clearly associated with the release identifier or another
               unique identifier for the asset.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Assign a unique version identifier to each software asset produced by
@@ -392,7 +392,7 @@ control-families:
         objective: |
           Protect the confidentiality and integrity of project source code during
           development, reducing the risk of eavesdropping or data tampering.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-11
@@ -423,7 +423,7 @@ control-families:
             text: |
               When the project lists a URI as an official project channel, that URI
               MUST be exclusively delivered using encrypted channels.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -436,7 +436,7 @@ control-families:
             text: |
               When the project lists a URI as an official distribution channel,
               that URI MUST be exclusively delivered using encrypted channels.
-            applicability: #TODO
+            levels: #TODO
             recommendation: |
               Configure the project's release pipeline to only fetch data from
               websites, API responses, and other services which use encrypted
@@ -450,7 +450,7 @@ control-families:
           Provide transparency and accountability for changes made to the project's
           software releases, enabling users to understand the modifications and
           improvements included in each release.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-8
@@ -494,7 +494,7 @@ control-families:
               When an official release is created, that release MUST contain
               a descriptive log of functional and security
               modifications.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -513,7 +513,7 @@ control-families:
           Ensure that the project's build and release pipelines use standardized tools
           and processes to manage dependencies, reducing the risk of compatibility
           issues or security vulnerabilities in the software.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - Q-B-2
@@ -546,7 +546,7 @@ control-families:
             text: |
               When a build and release pipeline ingests dependencies, it MUST
               use standardized tooling where available.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -562,7 +562,7 @@ control-families:
         objective: |
           All released software assets MUST be signed or accounted for in a
           signed manifest including each asset's cryptographic hashes.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: SSDF
             identifiers:
               - PO5.2
@@ -581,7 +581,7 @@ control-families:
               When an official release is created, that release MUST be signed or
               accounted for in a signed manifest including each asset's
               cryptographic hashes.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -607,7 +607,7 @@ control-families:
           Ensure that users have a clear and comprehensive understanding of the
           project's current features in order to prevent damage from misuse or
           misconfiguration.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-1
@@ -637,7 +637,7 @@ control-families:
             text: |
               When the project has made a release, the project documentation MUST
               include user guides for all basic functionality.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -654,7 +654,7 @@ control-families:
           Enable users and contributors to report defects or issues with the
           released software assets, facilitating communication and collaboration on
           defect fixes and improvements.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-3
@@ -688,7 +688,7 @@ control-families:
             text: |
               When the project has made a release, the project documentation MUST
               include a guide for reporting defects.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -709,7 +709,7 @@ control-families:
           Enable users to verify the authenticity and integrity of the project's
           released software assets, reducing the risk of using tampered or
           unauthorized versions of the software.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-8
@@ -732,7 +732,7 @@ control-families:
               When the project has made a release, the project documentation MUST
               contain instructions to verify the integrity and authenticity of the
               release assets.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Instructions in the project should contain information about the
@@ -746,7 +746,7 @@ control-families:
               When the project has made a release, the project documentation MUST
               contain instructions to verify the expected identity of the person or
               process authoring the software release.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               The expected identity may be in the form of key IDs used to sign,
@@ -765,7 +765,7 @@ control-families:
           Provide users with clear expectations regarding the project's support
           lifecycle. This allows downstream consumers to take relevant actions to
           ensure the continued functionality and security of their systems.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - R-B-3
@@ -784,7 +784,7 @@ control-families:
               When the project has made a release, the project documentation MUST
               include a descriptive statement about the scope and duration of
               support for each release.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               In order to communicate the scope and duration of support for the
@@ -799,7 +799,7 @@ control-families:
           Communicating when the project maintainers will no longer fix defects or
           security vulnerabilities is crucial for downstream consumers to find
           alternative solutions or alternative means of support for the project.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2c
@@ -818,7 +818,7 @@ control-families:
               When the project has made a release, the project documentation MUST
               provide a descriptive statement when releases or versions will no
               longer receive security updates.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               While a machine-readable OpenEoX file is recommended, this may also be
@@ -834,7 +834,7 @@ control-families:
           dependencies, libraries, frameworks, etc. to help downstream consumers
           understand how the project operates in regards to third-party components
           that are required necessary for the software to function.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - A-S-1
@@ -854,7 +854,7 @@ control-families:
               When the project has made a release, the project documentation MUST
               include a description of how the project selects, obtains, and tracks
               its dependencies.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -879,7 +879,7 @@ control-families:
           potential contributors, and downstream consumers have an accurate
           understanding of who is working on the project and what areas of authority
           they may have.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-3
@@ -892,7 +892,7 @@ control-families:
             text: |
               While active, the project documentation MUST include a list of
               project members with access to sensitive resources.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -905,7 +905,7 @@ control-families:
             text: |
               While active, the project documentation MUST include descriptions of
               the roles and responsibilities for members of the project.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -921,7 +921,7 @@ control-families:
           Encourages open communication and collaboration within the project
           community, enabling users to provide feedback and discuss proposed changes
           or usage challenges.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-3
@@ -941,7 +941,7 @@ control-families:
             text: |
               While active, the project MUST have one or more mechanisms for public
               discussions about proposed changes and usage obstacles.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -958,7 +958,7 @@ control-families:
           Provide guidance to new contributors on how to participate in the project,
           outlining the steps required to submit changes or enhancements to the
           project's codebase.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-4
@@ -981,7 +981,7 @@ control-families:
             text: |
               While active, the project documentation MUST include an explanation
               of the contribution process.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -993,7 +993,7 @@ control-families:
             text: |
               While active, the project documentation MUST include a guide for code
               contributors that includes requirements for acceptable contributions.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1012,7 +1012,7 @@ control-families:
           Ensure that code contributors are vetted and reviewed before being granted
           elevated permissions to sensitive resources within the project, reducing
           the risk of unauthorized access or misuse.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-5
@@ -1048,7 +1048,7 @@ control-families:
               While active, the project documentation MUST have a policy that code
               contributors are reviewed prior to granting escalated permissions to
               sensitive resources.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Publish an enforceable policy in the project documentation that
@@ -1078,7 +1078,7 @@ control-families:
           Ensure that code contributors are aware of and acknowledge their legal
           responsibility for the contributions they make to the project, reducing
           the risk of intellectual property disputes against the project.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-1
@@ -1098,7 +1098,7 @@ control-families:
               While active, the version control system MUST require all code
               contributors to assert that they are legally authorized to make the
               associated contributions on every commit.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1117,7 +1117,7 @@ control-families:
           Ensure that the project's source code is distributed under a recognized
           and legally enforceable open source software license, providing clarity on
           how the code can be used and shared by others.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-6
@@ -1136,7 +1136,7 @@ control-families:
             text: |
               While active, the license for the source code MUST meet the OSI Open
               Source Definition or the FSF Free Software Definition.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1152,7 +1152,7 @@ control-families:
             text: |
               While active, the license for the released software assets MUST meet
               the OSI Open Source Definition or the FSF Free Software Definition.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1173,7 +1173,7 @@ control-families:
           Ensure that the project's source code and released software assets are
           distributed with the appropriate license terms, making it clear to users
           and contributors how each can be used and shared.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-8
@@ -1189,7 +1189,7 @@ control-families:
               While active, the license for the source code MUST be maintained in
               the corresponding repository's LICENSE file, COPYING file, or
               LICENSE/ directory.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1205,7 +1205,7 @@ control-families:
               included in the released source code, or in a LICENSE file, COPYING
               file, or LICENSE/ directory alongside the corresponding release
               assets.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1235,7 +1235,7 @@ control-families:
         objective: |
           Enable users to access and review the project's source code and history,
           promoting transparency and collaboration within the project community.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-1
@@ -1275,7 +1275,7 @@ control-families:
             text: |
               While active, the project's source code repository MUST be publicly
               readable at a static URL.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1290,7 +1290,7 @@ control-families:
               The version control system MUST contain a publicly readable record of
               all changes made, who made the changes, and when the changes were
               made.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1306,7 +1306,7 @@ control-families:
           Provide transparency and accountability for the project's dependencies
           while enabling users and contributors to understand the software's direct
           dependencies.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - Q-S-8
@@ -1344,7 +1344,7 @@ control-families:
               When the package management system supports it, the source code
               repository MUST contain a dependency list that accounts for the direct
               language dependencies.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1356,7 +1356,7 @@ control-families:
             text: |
               When the project has made a release, all compiled released software
               assets MUST be delivered with a software bill of materials.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               It is recommended to auto-generate SBOMs at build time using a tool
@@ -1373,7 +1373,7 @@ control-families:
           failing status checks, even if arbitrary, because it increases the risk of
           overlooking security vulnerabilities or defects identified by automated
           checks.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -1399,7 +1399,7 @@ control-families:
             text: |
               When a commit is made to the primary branch, any automated status
               checks for commits MUST pass or be manually bypassed.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1418,7 +1418,7 @@ control-families:
           Ensure that additional code repositories or subprojects produced by the
           project are held to a standard that is clear and appropriate for that
           codebase.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2b
@@ -1442,7 +1442,7 @@ control-families:
             text: |
               While active, the project documentation MUST contain a list of any
               codebases that are considered subprojects or additional repositories.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1455,7 +1455,7 @@ control-families:
               When the project has made a release comprising multiple source code
               repositories, all subprojects MUST enforce security requirements that
               are as strict or stricter than the primary codebase.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Any additional subproject code repositories produced by the project
@@ -1474,7 +1474,7 @@ control-families:
           Reduce the risk of including generated executable artifacts in the
           project's version control system, ensuring that only source code and
           necessary files are stored in the repository.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2b
@@ -1491,7 +1491,7 @@ control-families:
             text: |
               While active, the version control system MUST NOT contain generated
               executable artifacts.
-            applicability:
+            levels:
               - Maturity Level 1
               - Maturity Level 2
               - Maturity Level 3
@@ -1509,7 +1509,7 @@ control-families:
         objective: |
           Ensure that the project uses at least one automated test suite for the
           source code repository which clearly documents when and how tests are run.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - Q-B-4
@@ -1539,7 +1539,7 @@ control-families:
               Prior to a commit being accepted, the project's CI/CD pipelines MUST
               run at least one automated test suite to ensure the changes meet
               expectations.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: | # give examples
@@ -1554,7 +1554,7 @@ control-families:
             text: |
               While active, project's documentation MUST clearly document when and
               how tests are run.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Add a section to the contributing documentation that explains how to
@@ -1566,7 +1566,7 @@ control-families:
               While active, the project's documentation MUST include a policy that
               all major changes to the software produced by the project should add
               or update tests of the functionality in an automated test suite.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Add a section to the contributing documentation that explains the
@@ -1581,7 +1581,7 @@ control-families:
           Ensure that the project's version control system requires at least one
           non-author approval of changes before merging into the release or primary
           branch.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-G-3
@@ -1591,7 +1591,7 @@ control-families:
               When a commit is made to the primary branch, the project's version
               control system MUST require at least one non-author approval of the
               changes before merging.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Configure the project's version control system to require at least one
@@ -1616,7 +1616,7 @@ control-families:
           the interactions and components of the system to help contributors and
           security reviewers understand the internal logic of the released software
           assets.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-1
@@ -1647,7 +1647,7 @@ control-families:
               When the project has made a release, the project documentation MUST
               include design documentation demonstrating all actions and actors
               within the system.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1665,7 +1665,7 @@ control-families:
           Provide users and developers with an understanding of how to interact with
           the project's software and integrate it with other systems, enabling them
           to use the software effectively.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-10
@@ -1696,7 +1696,7 @@ control-families:
               When the project has made a release, the project documentation MUST
               include descriptions of all external software interfaces of the
               released software assets.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1712,7 +1712,7 @@ control-families:
           Provide project maintainers an understanding of how the software can be
           misused or broken allows them to plan mitigations to close off the potential
           of those threats from occurring.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-8
@@ -1747,7 +1747,7 @@ control-families:
               When the project has made a release, the project MUST perform a
               security assessment to understand the most likely and impactful
               potential security problems that could occur within the software.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1764,7 +1764,7 @@ control-families:
               modeling and attack surface analysis to understand and protect against
               attacks on critical code paths, functions, and interactions within the
               system.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Threat modeling is an activity where the project looks at the 
@@ -1792,7 +1792,7 @@ control-families:
           Establish a process for reporting and addressing vulnerabilities in the
           project, ensuring that security issues are handled promptly and 
           transparently.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - R-B-6
@@ -1834,7 +1834,7 @@ control-families:
               While active, the project documentation MUST
               include a policy for coordinated vulnerability reporting, with a clear
               timeframe for response.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1852,7 +1852,7 @@ control-families:
           vulnerabilities in a project. People with vulnerabilities to report should
           have a clear understanding of the process so that they can quickly submit
           the report to the project.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-8
@@ -1884,7 +1884,7 @@ control-families:
             text: |
               While active, the project documentation MUST contain
               security contacts.
-            applicability:
+            levels:
               - Maturity Level 1
             recommendation: |
               Create a security.md (or similarly-named) file that contains security
@@ -1898,7 +1898,7 @@ control-families:
           Security vulnerabilities should not be shared with the public until such
           time the project has been provided time to analyze and prepare 
           remediations to protect users of the project.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - R-B-7
@@ -1915,7 +1915,7 @@ control-families:
               While active, the project documentation MUST
               provide a means for reporting security vulnerabilities privately to
               the security contacts within the project.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1930,7 +1930,7 @@ control-families:
         objective: |
           Consumers of the project must be informed about known vulnerabilities
           found within the project.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2a
@@ -1954,7 +1954,7 @@ control-families:
             text: |
               While active, the project documentation MUST
               publicly publish data about discovered vulnerabilities.
-            applicability:
+            levels:
               - Maturity Level 2
               - Maturity Level 3
             recommendation: |
@@ -1969,7 +1969,7 @@ control-families:
               software components not affecting the project MUST be accounted for
               in a VEX document, augmenting the vulnerability report with
               non-exploitability details.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Establish a VEX feed communicating the exploitability status of 
@@ -1988,7 +1988,7 @@ control-families:
           is merged as well as before it releases, reducing the risk of compromised
           delivery mechanisms or released software assets that are vulnerable or
           malicious.
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-8
@@ -2052,7 +2052,7 @@ control-families:
               While active, the project documentation MUST include a policy that
               defines a threshold for remediation of SCA findings related to
               vulnerabilities and licenses.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Document a policy in the project that defines a threshold for
@@ -2063,7 +2063,7 @@ control-families:
             text: |
               While active, the project documentation MUST include a policy to
               address SCA violations prior to any release.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Document a policy in the project to address applicable Software
@@ -2076,7 +2076,7 @@ control-families:
               dependencies and known vulnerabilities in dependencies, then blocked
               in the event of violations, except when declared and suppressed as
               non-exploitable.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Create a status check in the project's version control system that
@@ -2092,7 +2092,7 @@ control-families:
           Identify and address defects and security weaknesses in the project's
           codebase early in the development process, reducing the risk of shipping
           insecure software.
-        guideline-mappings: 
+        guidance-mappings: 
           - reference-id: BPB
             identifiers:
               - B-S-8
@@ -2155,7 +2155,7 @@ control-families:
             text: |
               While active, the project documentation MUST include a policy that
               defines a threshold for remediation of SAST findings.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Document a policy in the project that defines a threshold for
@@ -2168,7 +2168,7 @@ control-families:
               automatically evaluated against a documented policy for security
               weaknesses and blocked in the event of violations except when declared
               and suppressed as non-exploitable.
-            applicability:
+            levels:
               - Maturity Level 3
             recommendation: |
               Create a status check in the project's version control system that
