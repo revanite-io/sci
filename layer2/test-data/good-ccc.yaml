@@ -3,7 +3,7 @@ metadata:
   description: |
     FINOS CCC is an open standard project that describes consistent controls for
     compliant public cloud deployments in the financial services sector.
-  applicability-categories:
+  assessment-levels:
     - id: tlp_clear
       title: TLP:Clear
       description: |
@@ -38,7 +38,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH02 # Data is Intercepted in Transit
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CSF
             identifiers:
               - PR.DS-02 # Data-in-transit is protected
@@ -58,7 +58,7 @@ control-families:
             text: |
               When a port is exposed for non-SSH network traffic, all traffic MUST
               include a TLS handshake AND be encrypted using TLS 1.2 or higher.
-            applicability:
+            levels:
               - tlp_clear
               - tlp_green
               - tlp_amber
@@ -67,7 +67,7 @@ control-families:
             text: |
               When a port is exposed for SSH network traffic, all traffic MUST
               include a SSH handshake AND be encrypted using SSHv2 or higher.
-            applicability:
+            levels:
               - tlp_clear
               - tlp_green
               - tlp_amber
@@ -85,7 +85,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH03 # Deployment Region Network is Untrusted
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CCM
             identifiers:
               - DSI-06
@@ -105,7 +105,7 @@ control-families:
               When a deployment request is made, the service MUST validate
               that the deployment region is not to a restricted or regions
               or availability zones.
-            applicability:
+            levels:
               - tlp_clear
               - tlp_green
               - tlp_amber
@@ -115,7 +115,7 @@ control-families:
               When a deployment request is made, the service MUST validate that
               replication of data, backups, and disaster recovery operations
               will not occur in restricted regions or availability zones.
-            applicability:
+            levels:
               - tlp_clear
               - tlp_green
               - tlp_amber
@@ -131,7 +131,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH06 # Data is Lost or Corrupted
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CSF
             identifiers:
               - PR.DS-5 # Protections against data leaks are implemented
@@ -147,7 +147,7 @@ control-families:
             text: |
               When data is stored, the service MUST ensure that data is
               replicated across multiple availability zones or regions.
-            applicability:
+            levels:
               - tlp_green
               - tlp_amber
               - tlp_red
@@ -157,7 +157,7 @@ control-families:
               the service MUST be able to verify the replication state,
               including the replication locations and data synchronization
               status.
-            applicability:
+            levels:
               - tlp_green
               - tlp_amber
               - tlp_red
@@ -174,7 +174,7 @@ control-families:
               - CCC.TH07 # Logs are Tampered with or Deleted
               - CCC.TH09 # Logs or Monitoring Data are Read by Unauthorized Users
               - CCC.TH04 # Data is Replicated to Untrusted or External Locations
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CCM
             identifiers:
               - LOG-02 # Audit log protection
@@ -188,7 +188,7 @@ control-families:
             text: |
               When access logs are stored, the service MUST ensure that
               access logs cannot be accessed without proper authorization.
-            applicability:
+            levels:
               - tlp_amber
               - tlp_red
               - tlp_green
@@ -197,7 +197,7 @@ control-families:
             text: |
               When access logs are stored, the service MUST ensure that
               access logs cannot be modified without proper authorization.
-            applicability:
+            levels:
               - tlp_amber
               - tlp_red
               - tlp_green
@@ -206,7 +206,7 @@ control-families:
             text: |
               When access logs are stored, the service MUST ensure that
               access logs cannot be deleted without proper authorization.
-            applicability:
+            levels:
               - tlp_amber
               - tlp_red
               - tlp_green
@@ -225,7 +225,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH04 # Data is Replicated to Untrusted or External Locations
-        guideline-mappings:
+        guidance-mappings:
           - reference-id: CSF
             identifiers:
               - PR.DS-5 # Protections against data leaks are implemented
@@ -241,7 +241,7 @@ control-families:
             text: |
               When data is replicated, the service MUST ensure that
               replication is restricted to explicitly trusted destinations.
-            applicability:
+            levels:
               - tlp_green
               - tlp_amber
               - tlp_red
