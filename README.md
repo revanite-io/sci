@@ -65,7 +65,7 @@ Examples include [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks-over
 
 The SCI [Layer 2 Schema](./schemas/layer-2.cue) describes the machine-readable format of Layer 2 controls.
 
-The schema allows controls to be mapped to threats or Layer 1 controls by their unique identifiers. Threats may also be expressed in the schema, with mappings to the technology-specific capabilities which may be vulnerable to the threat.
+The schema allows controls to be mapped to threats or Layer 1 guidance by their unique identifiers. Threats may also be expressed in the schema, with mappings to the technology-specific capabilities which may be vulnerable to the threat.
 
 The SCI go module provides Layer 2 support for ingesting YAML and JSON documents that follow this schema.
 
